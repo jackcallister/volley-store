@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta viewport="width=device-width, initial-scale=1.0">
+    <title>Checkout - Volley DemoStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold text-gray-900">DemoStore</a>
+                    <span class="ml-2 text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Checkout</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Secure Bank Payment with Volley</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Order Summary -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="text-2xl font-bold mb-6">Order Summary</h2>
+
+                <div id="orderDetails" class="space-y-4">
+                    <!-- Product details will be populated by JavaScript -->
+                </div>
+
+                <div class="border-t pt-4 mt-6">
+                    <div class="flex justify-between items-center text-lg font-semibold">
+                        <span>Total:</span>
+                        <span id="totalAmount">$0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volley Bank Payment Form -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold mb-2">Pay by Bank with Volley</h2>
+                    <p class="text-gray-600">Secure direct bank payments - no cards needed</p>
+                </div>
+
+                <form id="volleyForm" class="space-y-4">
+                    <!-- Customer Information -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="customerEmail" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="your@email.com">
+                    </div>
+
+                    <!-- Volley Payment Method Selection -->
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-dashed border-green-200 rounded-lg p-6">
+                        <div class="text-center mb-6">
+                            <div class="text-3xl font-bold text-green-600 mb-2">⚡ Volley Payment</div>
+                            <p class="text-sm text-gray-600">Choose your payment method</p>
+                        </div>
+
+                        <!-- Payment Method Selection -->
+                        <div class="space-y-3">
+                            <div class="flex items-center p-4 bg-white rounded-lg border-2 border-green-200 hover:bg-green-50 cursor-pointer" onclick="selectPaymentMethod('volley-bank')">
+                                <input type="radio" name="paymentMethod" value="volley-bank" class="mr-3" checked>
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🏦</span>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Pay by Bank with Volley</div>
+                                        <div class="text-sm text-gray-600">Secure direct bank transfer - no cards needed</div>
+                                    </div>
+                                </div>
+                                <div class="ml-auto">
+                                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">Recommended</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Authorization -->
+                        <div class="mt-4 bg-white rounded-lg border p-4">
+                            <div class="text-sm font-medium text-gray-700 mb-3">Payment Authorization</div>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="authorizePayment" class="mr-2 h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                    <label for="authorizePayment" class="text-sm text-gray-700">
+                                        I authorize Volley to process payment of $<span id="authAmount">0.00</span> via bank transfer
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="agreeTerms" class="mr-2 h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                                    <label for="agreeTerms" class="text-sm text-gray-700">
+                                        I agree to the <a href="#" class="text-green-600 hover:underline">Terms of Service</a> and <a href="#" class="text-green-600 hover:underline">Privacy Policy</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volley Bank Features -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <div class="text-sm font-medium text-gray-700 mb-3">Why Pay by Bank with Volley?</div>
+                        <div class="grid grid-cols-2 gap-3 text-xs text-gray-600">
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>No Card Required</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Bank-Level Security</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Instant Verification</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Lower Processing Fees</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Real-time Confirmation</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-2">✓</span>
+                                <span>Fraud Protection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pay Button -->
+                    <button type="submit" id="payButton" disabled
+                            class="w-full bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 cursor-not-allowed">
+                        <span id="payButtonText">Please Authorize Payment</span>
+                        <span id="payButtonSpinner" class="hidden">
+                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Processing Payment...
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full">
+            <div class="text-center">
+                <div class="text-4xl mb-4">✅</div>
+                <h3 class="text-xl font-bold mb-2">Payment Successful!</h3>
+                <p class="text-gray-600 mb-4">Your payment has been processed via bank transfer with Volley.</p>
+                <div id="transactionDetails" class="bg-gray-50 rounded p-3 mb-4 text-sm"></div>
+                <button onclick="goHome()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">
+                    Return to Store
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full">
+            <div class="text-center">
+                <div class="text-4xl mb-4">❌</div>
+                <h3 class="text-xl font-bold mb-2">Payment Failed</h3>
+                <p id="errorMessage" class="text-gray-600 mb-4">Something went wrong. Please try again.</p>
+                <button onclick="closeErrorModal()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product');
+        const productName = urlParams.get('name');
+        const productPrice = parseFloat(urlParams.get('price'));
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrderDetails();
+            setupForm();
+        });
+
+        function displayOrderDetails() {
+            const orderDetails = document.getElementById('orderDetails');
+            const totalAmount = document.getElementById('totalAmount');
+            const authAmount = document.getElementById('authAmount');
+
+            if (productName && productPrice) {
+                orderDetails.innerHTML = `
+                    <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                        <div>
+                            <div class="font-medium">${productName}</div>
+                            <div class="text-sm text-gray-600">Quantity: 1</div>
+                        </div>
+                        <div class="font-semibold">${productPrice.toFixed(2)}</div>
+                    </div>
+                `;
+                totalAmount.textContent = `${productPrice.toFixed(2)}`;
+                if (authAmount) authAmount.textContent = productPrice.toFixed(2);
+            } else {
+                orderDetails.innerHTML = '<p class="text-gray-500">No product selected</p>';
+                totalAmount.textContent = '$0.00';
+                if (authAmount) authAmount.textContent = '0.00';
+            }
+        }
+
+        function selectPaymentMethod(method) {
+            // Payment method selection (currently only one option)
+            const radio = document.querySelector(`input[value="${method}"]`);
+            if (radio) radio.checked = true;
+        }
+
+        function updatePayButton() {
+            const payButton = document.getElementById('payButton');
+            const payButtonText = document.getElementById('payButtonText');
+            const authorizePayment = document.getElementById('authorizePayment');
+            const agreeTerms = document.getElementById('agreeTerms');
+
+            if (authorizePayment?.checked && agreeTerms?.checked) {
+                payButton.disabled = false;
+                payButton.className = 'w-full bg-green-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700 transition duration-200';
+                payButtonText.textContent = 'Complete Payment with Volley';
+            } else {
+                payButton.disabled = true;
+                payButton.className = 'w-full bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 cursor-not-allowed';
+                payButtonText.textContent = 'Please Authorize Payment';
+            }
+        }
+
+        function setupForm() {
+            const form = document.getElementById('volleyForm');
+
+            // Add event listeners for checkboxes
+            document.addEventListener('change', function(e) {
+                if (e.target.id === 'authorizePayment' || e.target.id === 'agreeTerms') {
+                    updatePayButton();
+                }
+            });
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const email = document.getElementById('customerEmail').value;
+                if (!email) {
+                    alert('Please enter your email address');
+                    return;
+                }
+
+                await processPayment(email);
+            });
+        }
+
+        async function processPayment(email) {
+            const payButton = document.getElementById('payButton');
+            const payButtonText = document.getElementById('payButtonText');
+            const payButtonSpinner = document.getElementById('payButtonSpinner');
+
+            // Show loading state
+            payButton.disabled = true;
+            payButtonText.classList.add('hidden');
+            payButtonSpinner.classList.remove('hidden');
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 3000));
+
+                // Simulate random success/failure for demo
+                const success = Math.random() > 0.1; // 90% success rate
+
+                if (success) {
+                    const transactionId = 'VLY-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+                    showSuccessModal({ transactionId });
+                } else {
+                    showErrorModal('Payment processing failed. Please try again.');
+                }
+            } catch (error) {
+                showErrorModal('Network error. Please check your connection and try again.');
+            }
+
+            // Reset button state
+            payButton.disabled = false;
+            payButtonText.classList.remove('hidden');
+            payButtonSpinner.classList.add('hidden');
+            updatePayButton();
+        }
+
+        function showSuccessModal(result) {
+            const modal = document.getElementById('successModal');
+            const transactionDetails = document.getElementById('transactionDetails');
+
+            transactionDetails.innerHTML = `
+                <div><strong>Transaction ID:</strong> ${result.transactionId}</div>
+                <div><strong>Amount:</strong> ${productPrice.toFixed(2)}</div>
+                <div><strong>Product:</strong> ${productName}</div>
+                <div><strong>Payment Method:</strong> Pay by Bank with Volley</div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function showErrorModal(message) {
+            const modal = document.getElementById('errorModal');
+            const errorMessage = document.getElementById('errorMessage');
+
+            errorMessage.textContent = message;
+            modal.classList.remove('hidden');
+        }
+
+        function closeErrorModal() {
+            document.getElementById('errorModal').classList.add('hidden');
+        }
+
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

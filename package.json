@@ -1,0 +1,20 @@
+{
+  "name": "volley-demostore",
+  "version": "1.0.0",
+  "description": "Simple demo store to showcase Volley payment method",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npm run build:css && node server.js",
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/styles.css --watch",
+    "build:css-prod": "tailwindcss -i ./src/input.css -o ./public/styles.css --minify"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

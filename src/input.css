@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Volley styles */
+@layer components {
+  .volley-gradient {
+    @apply bg-gradient-to-r from-volley-blue to-volley-purple;
+  }
+
+  .volley-text-gradient {
+    @apply bg-gradient-to-r from-volley-blue to-volley-purple bg-clip-text text-transparent;
+  }
+
+  .sticker-hover {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sticker-hover:hover {
+    transform: rotate(0deg) scale(1.05);
+  }
+}
+
+/* Custom animations */
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
