@@ -6,93 +6,52 @@
     <title>Volley DemoStore</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-gray-900">Volley DemoStore</h1>
-                    <span class="ml-2 text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Powered by Volley</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="https://volley.nz" class="text-sm text-gray-600">Get Volley</a>
-                </div>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <div class="container mx-auto px-6 py-12 max-w-4xl">
+        <!-- Logo Section -->
+        <div class="flex justify-center mb-12">
+            <img src="images/logo.svg" width="200" class="drop-shadow-sm"/>
+        </div>
+
+        <!-- Main Content -->
+        <div class="text-center space-y-8">
+            <!-- Main Heading -->
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+                Welcome to the Volley DemoStore
+            </h1>
+
+            <!-- Subheading -->
+            <h2 class="text-xl md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto">
+                Here you can test the different Volley Payment flows.
+            </h2>
+
+            <!-- Feature List -->
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto mt-12">
+                <ul class="text-left space-y-6" style="padding-left: 0rem; padding-top: 0rem;">
+                    <li class="space-y-2">
+                        <div class="font-semibold text-slate-800">Payments are for testing purposes only</div>
+                        <div class="text-slate-600">Remember this is for demonstration purposes only, no products will be delivered.</div>
+                    </li>
+
+                    <li class="space-y-2">
+                        <div class="font-semibold text-slate-800">You will need your bank app</div>
+                        <div class="text-slate-600">To experience a Volley payment you will need to use your ANZ, ASB, BNZ or Westpac mobile app.</div>
+                    </li>
+
+                    <li class="space-y-2">
+                        <div class="font-semibold text-slate-800">Your data is safe with us</div>
+                        <div class="text-slate-600">We do not use your data from these payments for sales or marketing.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="pt-8">
+                <a href="/flows.html" class="inline-block text-white font-semibold px-12 py-4 rounded-full text-lg transition-all duration-300 transform focus:outline-none focus:ring-4 focus:ring-orange-300" style="background-color: #FF652E;">
+                    Let's go
+                </a>
             </div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-4">Accept payments by bank transfer.</h2>
-            <p class="text-xl">This demo store showcases how Volley payments work.</p>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-3xl font-bold text-gray-900 text-center mb-12">Demo Products</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Hosted Checkout Product -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <div class="text-4xl mb-2">🏐</div>
-                            <div class="font-semibold">Hosted Checkout</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">Volley Sticker *</h4>
-                        <p class="text-gray-600 mb-4">Example of making a purchase using our hosted checkout option.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-900">$0.50</span>
-                            <button onclick="buyNow('volley-sticker-hosted', 'Volley Hosted Checkout', 0.50)"
-                                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                      Buy now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Embedded Checkout Product -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center">
-                        <div class="text-white text-center">
-                            <div class="text-4xl mb-2">🏐</div>
-                            <div class="font-semibold">Embedded Checkout</div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-semibold mb-2">Volley Sticker *</h4>
-                        <p class="text-gray-600 mb-4">Example of making a purchase using our embeded checkout option.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-gray-900">$0.50</span>
-                            <button onclick="buyNow('volley-sticker-embedded', 'Volley Embedded Checkout', 0.50)"
-                                    class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
-                                Buy now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="mb-2 text-lg font-semibold">⚠️ Demonstration Only</p>
-            <p class="text-gray-300">* This is a demonstration of the Volley payment system. No physical products will be delivered. All transactions are for testing purposes only and are non-refundable.</p>
-        </div>
-    </footer>
-
-    <script>
-        function buyNow(productId, productName, price) {
-            // Redirect to checkout with product info
-            window.location.href = 'https://app.volley.nz/pay/vJ8qrKJMej1L0W8Pbn0LK'// `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${price}`;
-        }
-    </script>
+    </div>
 </body>
 </html>

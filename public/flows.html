@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volley DemoStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <div class="container mx-auto px-6 py-12 max-w-4xl">
+        <!-- Logo Section -->
+        <div class="flex justify-center mb-12">
+            <img src="images/logo.svg" width="200" class="drop-shadow-sm"/>
+        </div>
+
+        <!-- Main Content -->
+        <div class="space-y-8">
+            <!-- Main Heading -->
+            <h1 class="text-center  text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+                Welcome to the Volley DemoStore
+            </h1>
+
+            <!-- Subheading -->
+            <h2 class="text-center  text-xl md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto">
+                Here you can test the different Volley Payment flows.
+            </h2>
+
+            <!-- Flow List -->
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto mt-12">
+              <div class="flex items-center justify-between">
+                <div class="text-left">
+                  <h2 class="text-2xl font-semibold text-slate-800 mb-2">Checkout Flow</h2>
+                  <p class="text-slate-600">Send your customers to our hosted checkout flow.</p>
+                </div>
+                <div class="ml-8">
+                  <a href="/checkout.html" class="inline-block text-white font-semibold px-8 py-3 rounded-full text-base transition-all duration-300 transform focus:outline-none focus:ring-4 focus:ring-orange-300" style="background-color: #FF652E;">
+                      Try it out
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-3xl mx-auto mt-12">
+              <div class="flex items-center justify-between">
+                <div class="text-left">
+                  <h2 class="text-2xl font-semibold text-slate-800 mb-2">Embedded Flow</h2>
+                  <p class="text-slate-600">Use a QR code for embedded payments.</p>
+                </div>
+                <div class="ml-8">
+                  <a href="/embedded.html" class="inline-block text-white font-semibold px-8 py-3 rounded-full text-base transition-all duration-300 transform focus:outline-none focus:ring-4 focus:ring-orange-300" style="background-color: #FF652E;">
+                      Try it out
+                  </a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
