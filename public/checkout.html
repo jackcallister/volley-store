@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Example Product - Volley DemoStore</title>
+    <title>Checkout - Volley DemoStore</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen flex flex-col">
@@ -18,66 +18,57 @@
                     <img src="images/logo.svg" width="120" class="drop-shadow-sm"/>
                 </div>
 
-                <!-- Cart and User Icons -->
+                <!-- Back to Product -->
                 <div class="flex items-center space-x-6">
-                    <!-- Cart Icon -->
-                    <div class="relative cursor-pointer">
-                        <svg class="w-6 h-6 text-slate-600 hover:text-slate-800 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5H19M9 19a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z"/>
-                        </svg>
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-                    </div>
-
-                    <!-- User Icon -->
-                    <div class="cursor-pointer">
-                        <svg class="w-6 h-6 text-slate-600 hover:text-slate-800 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                        </svg>
-                    </div>
+                    <a href="/" class="text-slate-600 hover:text-slate-800 transition-colors">← Back to Store</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-6 py-12 max-w-6xl">
-        <div class="grid md:grid-cols-2 gap-12 items-start">
+    <main class="flex-grow container mx-auto px-6 py-12 max-w-4xl">
+        <div class="bg-white rounded-xl shadow-lg p-8">
 
-            <!-- Product Image -->
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg flex items-center justify-center">
-                    <div class="text-center text-slate-500">
-                        <svg class="w-24 h-24 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                        </svg>
-                        <p class="text-sm">Product Image</p>
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-slate-800 mb-2">Checkout</h1>
+                <p class="text-slate-600">Complete your purchase with Volley</p>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="bg-slate-50 rounded-lg p-6 mb-8">
+                <h2 class="text-xl font-semibold text-slate-800 mb-4">Order Summary</h2>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-medium text-slate-800">Checkout Example</h3>
+                        <p class="text-slate-600 text-sm">Demo product for Volley payments</p>
                     </div>
+                    <div class="text-2xl font-bold" style="color: #FF652E;">50c</div>
                 </div>
             </div>
 
-            <!-- Product Details -->
-            <div class="space-y-6">
-                <!-- Product Title -->
-                <h1 class="text-4xl font-bold text-slate-800">Checkout Example</h1>
+            <!-- Payment Button -->
+            <div class="text-center">
+                <button id="payButton"
+                        class="w-full text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform focus:outline-none focus:ring-4 focus:ring-orange-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        style="background-color: #FF652E;">
+                    <span id="buttonText">Pay with Volley - 50c</span>
+                    <div id="loadingSpinner" class="hidden items-center justify-center">
+                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Creating payment...
+                    </div>
+                </button>
+            </div>
 
-                <!-- Price -->
-                <div class="text-3xl font-semibold" style="color: #FF652E;">50c</div>
-
-                <!-- Product Description -->
-                <div class="space-y-4 text-slate-600 text-lg leading-relaxed">
-                    <p>This is a demonstration product designed to showcase the Volley payment experience.</p>
-
-                    <p>Experience a hosted checkout process powered by Volley.</p>
-
-                    <p>
-                    <small>Please note: This is for demonstration purposes only. No actual product will be shipped.</small></p>
-                </div>
-
-                <div class="pt-4">
-                    <a href="/checkout.html" class="block w-full text-center text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform focus:outline-none focus:ring-4 focus:ring-orange-300" style="background-color: #FF652E;">
-                      Buy now
-                    </a>
-                </div>
+            <!-- Demo Notice -->
+            <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p class="text-blue-700 text-sm text-center">
+                    <strong>Demo Notice:</strong> This is a demonstration checkout. No actual payment will be processed and no goods will be shipped.
+                </p>
             </div>
         </div>
     </main>
@@ -98,6 +89,58 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('payButton').addEventListener('click', async function() {
+            const button = this;
+            const buttonText = document.getElementById('buttonText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            try {
+                // Set loading state
+                button.disabled = true;
+                buttonText.classList.add('hidden');
+                loadingSpinner.classList.remove('hidden');
+                loadingSpinner.classList.add('flex');
+
+                const response = await fetch('/api/requests', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: '0.50',
+                        productId: 'demo-product-1',
+                        customerEmail: 'demo@example.com'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.paymentUrl) {
+                    // Keep loading state while redirecting
+                    window.location.href = data.paymentUrl;
+                } else {
+                    // Reset button state on error
+                    button.disabled = false;
+                    buttonText.classList.remove('hidden');
+                    loadingSpinner.classList.add('hidden');
+                    loadingSpinner.classList.remove('flex');
+
+                    alert('Payment failed: ' + (data.message || 'Unknown error'));
+                }
+            } catch (error) {
+                // Reset button state on error
+                button.disabled = false;
+                buttonText.classList.remove('hidden');
+                loadingSpinner.classList.add('hidden');
+                loadingSpinner.classList.remove('flex');
+
+                console.error('Payment error:', error);
+                alert('Payment error occurred');
+            }
+        });
+    </script>
 
 </body>
 </html>
