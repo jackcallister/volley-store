@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const VOLLEY_API_URL = 'https://business-api-291583113477.australia-southeast1.run.app/v1/requests';
+const VOLLEY_API_URL = 'https://api.volley.nz/v1/requests';
 const VOLLEY_AUTH_KEY = process.env.VOLLEY_AUTH_KEY;
 const VOLLEY_BANK_ACCOUNT_ID = process.env.VOLLEY_BANK_ACCOUNT_ID;
 
@@ -38,18 +38,9 @@ app.post('/api/requests', async (req, res) => {
       message: `Demo Store Purchase`,
       type: "single",
       reference: `VOLLEYDEMO`,
-      require_customer_basic_info: false,
-      collect_customer_phone: false,
-      require_customer_phone: false,
-      require_customer_address: false,
-      allow_dynamic_amount: false,
-      min_payment_amount: 0,
-      max_payment_amount: 0,
-      options: {
-        auto_create_payment: false,
-        generate_request_qr_data: false,
-        generate_payment_qr_data: false
-      }
+      flow: "checkout",
+      success_redirect_url: "",
+      failure_redirect_url: "",
     };
 
     console.log('Calling API...');
