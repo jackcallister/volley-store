@@ -6,11 +6,10 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const VOLLEY_API_URL = 'https://api.volley.nz/v1/requests';
+const VOLLEY_API_URL = process.end.VOLLEY_API_URL;
 const VOLLEY_AUTH_KEY = process.env.VOLLEY_AUTH_KEY;
 const VOLLEY_BANK_ACCOUNT_ID = process.env.VOLLEY_BANK_ACCOUNT_ID;
 
-console.log(VOLLEY_AUTH_KEY)
 // Middleware
 app.use(express.static('public'));
 app.use(express.json());
@@ -39,11 +38,9 @@ app.post('/api/requests', async (req, res) => {
       type: "single",
       reference: `VOLLEYDEMO`,
       flow: "checkout",
-      success_redirect_url: "",
-      failure_redirect_url: "",
+      success_redirect_url: "https://volley.nz/success",
+      failure_redirect_url: "https://volley.nz/failure",
     };
-
-    console.log('Calling API...');
 
     // Call the Volley API
     const response = await fetch(VOLLEY_API_URL, {
