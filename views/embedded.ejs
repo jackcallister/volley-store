@@ -107,5 +107,27 @@
         </div>
     </footer>
 
+    <script>
+      // Add event listener for messages from iframe
+      window.addEventListener('message', (event) => {
+        // Recommended: Verify the origin of the iframe
+        if (event.origin !== 'https://app.volley.nz') {
+          return;
+        }
+
+        // Events can be one of:
+        //  - volley.payment_cancelled
+        //  - volley.payment_failed
+        //  - volley.payment_successful
+
+        if (event.data.type === 'volley.payment_successful') {
+          const { payment_id, request_id } = event.data.payload;
+
+          // Pass the payment ID back to your backend for validation
+          // ... then complete your payment flow
+          console.log("Event", event)
+        }
+      });
+    </script>
 </body>
 </html>
