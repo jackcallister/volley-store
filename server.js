@@ -32,7 +32,6 @@ app.get('/checkout', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'checkout.html'));
 });
 
-// Embedded route - creates Volley request and renders template
 app.get('/embedded', async (req, res) => {
   try {
     const volleyRequest = {
@@ -41,12 +40,12 @@ app.get('/embedded', async (req, res) => {
       message: `Demo Store Purchase`,
       type: "single",
       reference: `VOLLEYDEMO`,
+      expires_in: "5m",
       flow: "checkout",
       success_redirect_url: "https://volley.nz/success",
       failure_redirect_url: "https://volley.nz/failure",
     };
 
-    // Call the Volley API
     const response = await fetch(VOLLEY_API_URL, {
       method: 'POST',
       headers: {
@@ -61,7 +60,6 @@ app.get('/embedded', async (req, res) => {
     console.log('Volley API Response:', volleyResponse)
 
     if (response.ok && volleyResponse.request) {
-      // Render the EJS template with the request_id
       res.render('embedded', {
         requestId: volleyResponse.request.id
       });
