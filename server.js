@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const VOLLEY_API_URL = process.end.VOLLEY_API_URL;
+const VOLLEY_API_URL = process.env.VOLLEY_API_URL;
 const VOLLEY_AUTH_KEY = process.env.VOLLEY_AUTH_KEY;
 const VOLLEY_BANK_ACCOUNT_ID = process.env.VOLLEY_BANK_ACCOUNT_ID;
 
