@@ -57,7 +57,6 @@ app.get('/embedded', async (req, res) => {
     });
 
     const volleyResponse = await response.json();
-    console.log('Volley API Response:', JSON.stringify(volleyResponse, null, 2));
 
     if (response.ok && volleyResponse.request) {
       // Render the EJS template with the request_id
