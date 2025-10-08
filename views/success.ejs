@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Payment Successful - Volley DemoStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="/images/logo.svg" width="120" class="drop-shadow-sm"/>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-6 py-12 max-w-2xl">
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 text-center">
+
+            <!-- Success Icon -->
+            <div class="mb-8">
+                <div class="mx-auto w-24 h-24 bg-green-100 rounded-full flex items-center justify-center animate-pulse">
+                    <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Payment Successful!</h1>
+
+            <p class="text-lg text-slate-600 mb-8">
+                Thank you for your payment. Your transaction has been completed successfully.
+            </p>
+
+            <!-- Payment Details Card -->
+            <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-6 mb-8 text-left">
+                <h2 class="text-lg font-semibold text-slate-800 mb-4 text-center">Transaction Details</h2>
+
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center py-2 border-b border-slate-200">
+                        <span class="text-slate-600">Status</span>
+                        <span class="font-semibold text-green-600 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Completed
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between items-center py-2 border-b border-slate-200">
+                        <span class="text-slate-600">Payment Method</span>
+                        <span class="font-semibold text-slate-800">Volley</span>
+                    </div>
+
+                    <% if (requestId) { %>
+                    <div class="flex justify-between items-center py-2 border-b border-slate-200">
+                        <span class="text-slate-600">Request ID</span>
+                        <span class="font-mono text-sm text-slate-800"><%= requestId %></span>
+                    </div>
+                    <% } %>
+
+                    <% if (paymentId) { %>
+                    <div class="flex justify-between items-center py-2 border-b border-slate-200">
+                        <span class="text-slate-600">Payment ID</span>
+                        <span class="font-mono text-sm text-slate-800"><%= paymentId %></span>
+                    </div>
+                    <% } %>
+
+                    <div class="flex justify-between items-center py-2">
+                        <span class="text-slate-600">Date</span>
+                        <span class="font-semibold text-slate-800"><%= date %></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Notice -->
+            <div class="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p class="text-blue-700 text-sm">
+                    <strong>Demo Notice:</strong> This was a demonstration payment. No actual transaction was processed.
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-3">
+                <a href="/"
+                   class="block w-full text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300"
+                   style="background-color: #FF652E;">
+                    Return to Store
+                </a>
+
+                <a href="/donation"
+                   class="block w-full text-slate-600 hover:text-slate-800 font-medium px-8 py-3 rounded-full text-lg transition-colors border-2 border-slate-300 hover:border-slate-400">
+                    Make Another Payment
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center space-y-4">
+                <!-- Footer Logo -->
+                <div class="flex justify-center mb-4">
+                    <img src="/images/logo.svg" width="100" class="drop-shadow-sm"/>
+                </div>
+
+                <!-- Disclaimer Text -->
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    This store is only for demonstrating Volley payments. No goods will be shipped.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
